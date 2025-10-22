@@ -198,10 +198,10 @@ def format_filepath(root_folder, file, replacements):
     # Windows filesystem is case insensitive
     # This will avoid duplicated folders if ran in Unix-like: My Games, my Games, My games
     # While on Windows it'll accept fine if you paste it, independent of folder case
-    if "Windows" in path:
-        return path.lower() + filename
+    if "windows" in path:
+        return path.lower() + "/" + filename
 
-    return path + filename
+    return path + "/" + filename
 
 
 def fetch_and_store_file(url, filepath):
