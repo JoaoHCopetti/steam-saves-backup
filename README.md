@@ -7,6 +7,7 @@ A Python script that scrap https://store.steampowered.com/account/remotestorage 
 - [How it works](#how-it-works)
 - [How to use it](#how-to-use-it)
 - [Note about directory structure](#note-about-directory-structure)
+- [Known issues](#known-issues)
 - [Contributing](#contributing)
 
 ## Motivation<a name="motivation"></a>
@@ -113,9 +114,18 @@ The script might create 4 main directories:
 
 Note that the folder names are just a references, not the real path, you should copy and paste to the real path of your OS accordingly, for example, in Windows, you'd copy the contents of `anyplatform/_steam_install_/` to `C:\Program Files (x86)\Steam`
 
+## Known issues<a name="known-issues"></a>
+- For any save game under `save-files/anyplatform/_steam_library_/steamapps/common/` you may need to rename it to the correct install dir name, you can find the correct name in the https://steamdb.info page of your game, in "Configuration" side tab. This is needed because I can't figure out where to pull the official install dir of each game, and steamdb doesn't allow scrapping, so I just named it same as the game name.
+<details>
+  <summary>See here</summary>
+  https://steamdb.info/app/70/config/
+  <img width="924" height="570" alt="image" src="https://github.com/user-attachments/assets/7c2a73c3-c112-4e95-b153-f04a673da3b7" />
+</details>
+
 ## Contributing<a name="#contributing"></a>
 If you wish to fork this or anything, don't forget to mark the file `_paste_your_cookie_here.txt` as `assume-unchaged` so you don't push your auth cookie to remote repo by mistake:
 ```
 git update-index --assume-unchanged _paste_your_cookie_here.txt
 ```
 This will make changes to this file not be detected by git.
+
