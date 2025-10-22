@@ -31,8 +31,9 @@ The root folder isn't provided by the website too, I used the table described on
 
 ## How to use it<a name="#how-to-use-it"></a>
 It only requires Python installed. And two modules: [requests](https://pypi.org/project/requests/) and [beautifulsoup](https://pypi.org/project/BeautifulSoup/)
+For Windows, you should use PowerShell to execute the following commands.
 
-- Clone the repo
+- Clone the repo (or download the .zip directly from this page, then extract):
 ```
 git clone https://github.com/JoaoHCopetti/steam-saves-backup.git
 ```
@@ -48,7 +49,11 @@ python -m venv .venv
 
 - Install the required dependencies
 ```
+# Linux
 ./.venv/bin/pip install -r requirements.txt
+
+# Windows
+# TODO
 ```
 
 - Now we'll use your auth session cookie, you need to login in your account and copy your session cookies, don't worry, your cookies will only be used to authenticate in the remote storage pages. You can check the script by yourself (it's short).
@@ -130,5 +135,6 @@ If you wish to fork this or anything, don't forget to mark the file `_paste_your
 git update-index --assume-unchanged _paste_your_cookie_here.txt
 ```
 This will make changes to this file not be detected by git.
+
 
 
