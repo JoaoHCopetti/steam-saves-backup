@@ -23,7 +23,7 @@ SAVE_GAMES_PATHS = {
     "WinSavedGames": "windows/_user_profile_/saved games/",
     "WindowsHome": "windows/_user_profile_/",
     "MacHome": "mac/_home_/",
-    "MacAppSupport": "mac/_home_/library/application support",
+    "MacAppSupport": "mac/_home_/library/application support/",
     "MacDocuments": "mac/_home_/documents/",
     "LinuxHome": "linux/_home_/",
     "LinuxXdgDataHome": "linux/_xdg_data_home_/",
