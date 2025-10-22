@@ -30,8 +30,7 @@ The root folder isn't provided by the website too, I used the table described on
     - `%LOCALAPPDATA%\GOG.com\Galaxy\Applications\58668848197088414\Storage\Shared\Files\`
 
 ## How to use it<a name="#how-to-use-it"></a>
-It only requires Python installed. And two modules: [requests](https://pypi.org/project/requests/) and [beautifulsoup](https://pypi.org/project/BeautifulSoup/)
-For Windows, you should use PowerShell to execute the following commands.
+It only requires Python installed. And two modules: [requests](https://pypi.org/project/requests/) and [beautifulsoup](https://pypi.org/project/BeautifulSoup/). For Windows, you should use PowerShell to execute the following commands.
 
 - Clone the repo (or download the .zip directly from this page, then extract):
 ```
@@ -139,6 +138,7 @@ If you wish to fork this or anything, don't forget to mark the file `_paste_your
 git update-index --assume-unchanged _paste_your_cookie_here.txt
 ```
 This will make changes to this file not be detected by git.
+
 
 
 
