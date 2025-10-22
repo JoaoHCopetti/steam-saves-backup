@@ -53,7 +53,7 @@ python -m venv .venv
 ./.venv/bin/pip install -r requirements.txt
 
 # Windows
-# TODO
+.\.venv\Scripts\pip.exe install -r .\requirements.txt
 ```
 
 - Now we'll use your auth session cookie, you need to login in your account and copy your session cookies, don't worry, your cookies will only be used to authenticate in the remote storage pages. You can check the script by yourself (it's short).
@@ -100,7 +100,11 @@ python -m venv .venv
 - Paste the cookie value in the project file `_paste_your_cookie_here.txt`
 - Run the script:
 ```
+# Linux
 ./.venv/bin/python main.py
+
+# Windows
+.\.venv\Scripts\python.exe .\main.py
 ```
 
 It'll start download all your remote save files to `save-files` folder in the project directory.
@@ -135,6 +139,7 @@ If you wish to fork this or anything, don't forget to mark the file `_paste_your
 git update-index --assume-unchanged _paste_your_cookie_here.txt
 ```
 This will make changes to this file not be detected by git.
+
 
 
 
