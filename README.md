@@ -7,6 +7,7 @@ A Python script that scrap https://store.steampowered.com/account/remotestorage 
 - [How it works](#how-it-works)
 - [How to use it](#how-to-use-it)
 - [Note about directory structure](#note-about-directory-structure)
+- [Contributing](#contributing)
 
 ## Motivation<a name="motivation"></a>
 Recently I've decided to download DRM-free versions of my Steam games (from GOG), but I wanted my old save files. So instead of spending **hours** downloading all of them manually, I decided to spend **hours x 2** making this script that do it automatically. 
@@ -111,3 +112,10 @@ The script might create 4 main directories:
 - `mac`: For save games exclusive to Mac
 
 Note that the folder names are just a references, not the real path, you should copy and paste to the real path of your OS accordingly, for example, in Windows, you'd copy the contents of `anyplatform/_steam_install_/` to `C:\Program Files (x86)\Steam`
+
+## Contributing<a name="#contributing"></a>
+If you wish to fork this or anything, don't forget to mark the file `_paste_your_cookie_here.txt` as `assume-unchaged` so you don't push your auth cookie to remote repo by mistake:
+```
+git update-index --assume-unchanged _paste_your_cookie_here.txt
+```
+This will make changes to this file not be detected by git.
