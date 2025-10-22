@@ -1,4 +1,4 @@
-import sys
+import platform
 import os
 import requests
 from bs4 import BeautifulSoup
@@ -155,13 +155,23 @@ def store_save_files(save_files, app_id, steam_3_account_id, game_name):
             },
         )
 
-        print(f"[FILEPATH] {filepath}")
+        show_filepath(filepath)
 
         if os.path.isfile(filepath):
             print("[ALREADY EXISTS, SKIPPING]\n")
         else:
             print(f"[FETCHING {index + 1}/{len(save_files)}] {file["size"]}")
             fetch_and_store_file(file["download_url"], filepath)
+
+
+def show_filepath(filepath):
+    os_type = platform.system()
+
+    if os_type == "Windows":
+        print(filepath.replace("/", "\\"))
+        return
+
+    print(filepath)
 
 
 def game_name_for_windows(game_name):
