@@ -8,6 +8,7 @@ A Python script that scrap https://store.steampowered.com/account/remotestorage 
 - [How to use it](#how-to-use-it)
 - [Directory structure](#directory-structure)
 - [Known issues](#known-issues)
+- [TODO](#todo)
 - [Contributing](#contributing)
 
 ## Motivation<a name="motivation"></a>
@@ -132,12 +133,19 @@ Note that the folder names are just a reference, not the real path, you should c
 
 - I don't know if the Steam remote storage page has pagination, if it does, it will just scrap the first page, you can change the variable `STEAM_REMOTE_STORAGE_URL` of `constants.py` to a different URL to scrap other pages, I didn't handle this because my account doesn't seems to have enough save files for pagination, so I can't test it.
 
+## TODO<a name="todo"></a>
+- [ ] Fix installdir path
+- [ ] Provide CLI to choose specific games
+- [ ] Implement Steam OAuth and remove cookie based auth
+- [ ] Automated tests
+
 ## Contributing<a name="#contributing"></a>
 If you wish to fork this or anything, don't forget to mark the file `_paste_your_cookie_here.txt` as `assume-unchaged` after cloning, so you don't push your auth cookie to some remote repo by mistake:
 ```
 git update-index --assume-unchanged _paste_your_cookie_here.txt
 ```
 This will make changes to this file not be detected by git.
+
 
 
 
