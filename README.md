@@ -6,16 +6,16 @@ A Python script that scrap https://store.steampowered.com/account/remotestorage 
 - [Motivation](#motivation)
 - [How it works](#how-it-works)
 - [How to use it](#how-to-use-it)
-- [Note about directory structure](#note-about-directory-structure)
+- [Directory structure](#directory-structure)
 - [Known issues](#known-issues)
 - [Contributing](#contributing)
 
 ## Motivation<a name="motivation"></a>
-Recently I've decided to download DRM-free versions of my Steam games (from GOG), but I wanted my old save files. So instead of spending **hours** downloading all of them manually, I decided to spend **hours x 2** making this script that do it automatically. 
-
-Also, downloading directly from the website won't keep the original folder structure, which can lead to confusion, the file name is downloaded as `dir1_dir2_dir3_savefile` instead of `dir1/dir2/dir3/savefile` (you'd need to rename and create every folder manually, prone to errors).
-
-The root folder isn't provided by the website too, I used the table described on https://partner.steamgames.com/doc/features/cloud#setup, and some undocumented folders I got from https://steamdb.info
+Recently I've decided to download DRM-free versions of my Steam games (from GOG), but I wanted my old save files from my Steam games.
+While Steam provides a dedicated page to download all of it, there's a few issues:
+- Downloading from their webiste won't keep the original folder structure. The save file is named as `dir1_subdir1_subdir2_savefile` instead of `dir1/subdir1/subdir2/savefile` you'd need to rename and create every folder manually, prone to errors
+- The save file root folder isn't provided. I used the table described on https://partner.steamgames.com/doc/features/cloud#setup, plus some undocumented folders from https://steamdb.info
+- Some games may have more than 100 save files, downloading them individually and sorting all of it would be a chore
 
 ## How it works<a name="how-it-works"></a>
 - Scraps https://store.steampowered.com/account/remotestorage for the main page of each game
@@ -30,24 +30,24 @@ The root folder isn't provided by the website too, I used the table described on
     - `%LOCALAPPDATA%\GOG.com\Galaxy\Applications\58668848197088414\Storage\Shared\Files\`
 
 ## How to use it<a name="#how-to-use-it"></a>
-It only requires Python installed. And two modules: [requests](https://pypi.org/project/requests/) and [beautifulsoup](https://pypi.org/project/BeautifulSoup/). For Windows, you should use PowerShell to execute the following commands.
+It only requires Python 3 and two modules: [requests](https://pypi.org/project/requests/) and [beautifulsoup](https://pypi.org/project/BeautifulSoup/). For Windows, you should use PowerShell to execute the following commands.
 
 - Clone the repo (or download the .zip directly from this page, then extract):
-```
+```bash
 git clone https://github.com/JoaoHCopetti/steam-saves-backup.git
 ```
 
 - Enter into the directory
-```
+```bash
 cd steam-saves-backup
 ```
 - Create a Python virtual environment
-```
+```bash
 python -m venv .venv
 ```
 
 - Install the required dependencies
-```
+```bash
 # Linux
 ./.venv/bin/pip install -r requirements.txt
 
@@ -55,7 +55,7 @@ python -m venv .venv
 .\.venv\Scripts\pip.exe install -r .\requirements.txt
 ```
 
-- Now we'll use your auth session cookie, you need to login in your account and copy your session cookies, don't worry, your cookies will only be used to authenticate in the remote storage pages. You can check the script by yourself (it's short).
+- Now we'll use your auth session cookie, you need to login in your account and copy your session cookies, don't worry, your cookies will only be used to authenticate in the remote storage pages. You can check the script by yourself (it's short)
 
 <details>
   <summary>
@@ -96,7 +96,7 @@ python -m venv .venv
 
 </details>
 
-- Paste the cookie value in the project file `_paste_your_cookie_here.txt`
+- Paste the cookie value in the project file `_paste_your_cookie_here.txt` and save it
 - Run the script:
 ```
 # Linux
@@ -106,9 +106,9 @@ python -m venv .venv
 .\.venv\Scripts\python.exe .\main.py
 ```
 
-It'll start download all your remote save files to `save-files` folder in the project directory.
+It'll start download all your remote save files to `save-files` folder in the project directory
 
-## Note about directory structure<a name="#note-about-directory-structure"></a>
+## Directory structure<a name="#directory-structure"></a>
 The script might create 4 main directories:
 - `anyplatform`: It's for save-files independent of platform (Windows, Linux or Mac)
   - `_steam_install_`: The Steam Client installation directory (not your games library)
@@ -120,24 +120,25 @@ The script might create 4 main directories:
    - `_user_profile_`: This is your Windows user profile, usually in `C:\Users\User Name\`
 - `mac`: For save games exclusive to Mac
 
-Note that the folder names are just a references, not the real path, you should copy and paste to the real path of your OS accordingly, for example, in Windows, you'd copy the contents of `anyplatform/_steam_install_/` to `C:\Program Files (x86)\Steam`
+Note that the folder names are just a reference, not the real path, you should copy and paste to the real path of your OS accordingly, for example, in Windows, you'd copy the contents of `anyplatform/_steam_install_/` to `C:\Program Files (x86)\Steam`
 
 ## Known issues<a name="known-issues"></a>
-- For any save game under `save-files/anyplatform/_steam_library_/steamapps/common/` you may need to rename it to the correct install dir name, you can find the correct name in the https://steamdb.info page of your game, in "Configuration" side tab. This is needed because I can't figure out where to pull the official install dir of each game, and steamdb doesn't allow scrapping, so I just named it same as the game name.
+- For any save game under `save-files/anyplatform/_steam_library_/steamapps/common/` you might need to rename it to the correct install dir name, you can find the correct name in the https://steamdb.info page of your game, in "Configuration" side tab. This is needed because I can't figure out where to pull the official install dir of each game, and steamdb doesn't allow scrapping, so I just named it same as the game name.
 <details>
   <summary>See here</summary>
   https://steamdb.info/app/70/config/
   <img width="924" height="570" alt="image" src="https://github.com/user-attachments/assets/7c2a73c3-c112-4e95-b153-f04a673da3b7" />
 </details>
 
-- I don't know if the Steam remote storage page has pagination, if it does, it will just scrap the first page, you can change the variable `STEAM_REMOTE_STORAGE_URL` to a different URL to scrap other pages, I didn't handle this because my account doesn't seems to have enough save files for pagination, so I can't test it.
+- I don't know if the Steam remote storage page has pagination, if it does, it will just scrap the first page, you can change the variable `STEAM_REMOTE_STORAGE_URL` of `constants.py` to a different URL to scrap other pages, I didn't handle this because my account doesn't seems to have enough save files for pagination, so I can't test it.
 
 ## Contributing<a name="#contributing"></a>
-If you wish to fork this or anything, don't forget to mark the file `_paste_your_cookie_here.txt` as `assume-unchaged` so you don't push your auth cookie to remote repo by mistake:
+If you wish to fork this or anything, don't forget to mark the file `_paste_your_cookie_here.txt` as `assume-unchaged` after cloning, so you don't push your auth cookie to some remote repo by mistake:
 ```
 git update-index --assume-unchanged _paste_your_cookie_here.txt
 ```
 This will make changes to this file not be detected by git.
+
 
 
 
