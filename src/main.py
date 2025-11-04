@@ -35,9 +35,9 @@ def main():
 
 def parse_urls(request_content):
     game_urls = []
-    sp_remote = BeautifulSoup(request_content, "html.parser")
+    bs_remote = BeautifulSoup(request_content, "html.parser")
 
-    for anchor_el in sp_remote.select("table.accountTable a"):
+    for anchor_el in bs_remote.select("table.accountTable a"):
         game_url = anchor_el.get("href")
         game_urls.append(game_url)
 
